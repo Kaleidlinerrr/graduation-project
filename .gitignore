@@ -1,0 +1,64 @@
+# 忽略实验结果目录
+results/
+results_iot/
+results_mc_iot/
+results_mc_vpn_app/
+results_mc_vpn_service/
+results_noisy/
+results_vpn_app/
+results_vpn_service/
+ex_results_noisy_drop/
+ex_results_noisy/
+ex_results_finetune/
+ex_results_8class_cache/
+ex_results_6class_cache/
+
+# 忽略缓存目录
+npy_caches/
+
+# 忽略数据集目录
+datasets_noisy/
+datasets/
+dataset_noisy_span_drop/
+dataset_noisy_padding/
+dataset_noisy_mixed_extreme/
+dataset_noisy_duplicate/
+dataset_noisy_drop_10/
+dataset_noisy_drop/
+dataset_finetune/
+dataset/
+
+# 忽略所有大型数据文件和模型权重
+*.pcap
+*.npy
+*.pt
+*.bin
+*.bin-*
+*.tsv
+
+# 忽略特定的大型杂项文件
+Miniconda3-latest-Linux-x86_64.sh
+output.txt
+corpora/length_tls13_burst.txt
+
+# 绝对禁止 Git 追踪废弃的垃圾桶文件夹
+.git_trash*
+
+# 忽略其他暴露的大文件后缀
+*.model
+*.exe
+EOFcat << 'EOF' >> .gitignore
+
+# 绝对禁止 Git 追踪废弃的垃圾桶文件夹
+.git_trash*
+
+# 忽略其他暴露的大文件后缀
+*.model
+*.exe
+
+# 绝对禁止 Git 追踪废弃的垃圾桶文件夹
+.git_trash*
+
+# 忽略其他暴露的大文件后缀
+*.model
+*.exe

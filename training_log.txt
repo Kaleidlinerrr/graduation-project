@@ -1,0 +1,71 @@
+fine-tuning/run_classifier.py:96: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(args.pretrained_model_path, map_location='cpu'), strict=False)
+Batch size:  32
+The number of training instances: 12000
+2 GPUs are available. Let's use them.
+Start training.
+  0%|          | 0/5 [00:00<?, ?it/s]/home/kaleid/miniconda3/envs/myenv/lib/python3.8/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 20%|██        | 1/5 [01:00<04:03, 60.92s/it]/home/kaleid/miniconda3/envs/myenv/lib/python3.8/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 40%|████      | 2/5 [02:00<03:00, 60.02s/it]/home/kaleid/miniconda3/envs/myenv/lib/python3.8/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 60%|██████    | 3/5 [03:02<02:02, 61.15s/it]/home/kaleid/miniconda3/envs/myenv/lib/python3.8/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 80%|████████  | 4/5 [04:02<01:00, 60.55s/it]/home/kaleid/miniconda3/envs/myenv/lib/python3.8/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+100%|██████████| 5/5 [04:59<00:00, 59.41s/it]100%|██████████| 5/5 [04:59<00:00, 59.96s/it]
+fine-tuning/run_classifier.py:487: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.module.load_state_dict(torch.load(args.output_model_path))
+/home/kaleid/miniconda3/envs/myenv/lib/python3.8/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+Epoch id: 1, Training steps: 100, Avg loss: 0.617
+Epoch id: 1, Training steps: 200, Avg loss: 0.311
+Epoch id: 1, Training steps: 300, Avg loss: 0.262
+Acc. (Correct/Total): 0.9120 (1368/1500) 
+F1 Macro: 0.9113, F1 Micro: 0.9120, F1 Weighted: 0.9113
+Precision Macro: 0.9166, Recall Macro: 0.9120
+Epoch 1 - Validation Accuracy: 0.9120, F1 Macro: 0.9113
+New best model saved with accuracy: 0.9120
+Epoch id: 2, Training steps: 100, Avg loss: 0.443
+Epoch id: 2, Training steps: 200, Avg loss: 0.241
+Epoch id: 2, Training steps: 300, Avg loss: 0.239
+Acc. (Correct/Total): 0.9100 (1365/1500) 
+F1 Macro: 0.9094, F1 Micro: 0.9100, F1 Weighted: 0.9094
+Precision Macro: 0.9161, Recall Macro: 0.9100
+Epoch 2 - Validation Accuracy: 0.9100, F1 Macro: 0.9094
+Epoch id: 3, Training steps: 100, Avg loss: 0.422
+Epoch id: 3, Training steps: 200, Avg loss: 0.234
+Epoch id: 3, Training steps: 300, Avg loss: 0.229
+Acc. (Correct/Total): 0.9127 (1369/1500) 
+F1 Macro: 0.9122, F1 Micro: 0.9127, F1 Weighted: 0.9122
+Precision Macro: 0.9176, Recall Macro: 0.9127
+Epoch 3 - Validation Accuracy: 0.9127, F1 Macro: 0.9122
+New best model saved with accuracy: 0.9127
+Epoch id: 4, Training steps: 100, Avg loss: 0.408
+Epoch id: 4, Training steps: 200, Avg loss: 0.229
+Epoch id: 4, Training steps: 300, Avg loss: 0.223
+Acc. (Correct/Total): 0.9133 (1370/1500) 
+F1 Macro: 0.9126, F1 Micro: 0.9133, F1 Weighted: 0.9126
+Precision Macro: 0.9188, Recall Macro: 0.9133
+Epoch 4 - Validation Accuracy: 0.9133, F1 Macro: 0.9126
+New best model saved with accuracy: 0.9133
+Epoch id: 5, Training steps: 100, Avg loss: 0.398
+Epoch id: 5, Training steps: 200, Avg loss: 0.225
+Epoch id: 5, Training steps: 300, Avg loss: 0.219
+Acc. (Correct/Total): 0.9133 (1370/1500) 
+F1 Macro: 0.9126, F1 Micro: 0.9133, F1 Weighted: 0.9126
+Precision Macro: 0.9188, Recall Macro: 0.9133
+Epoch 5 - Validation Accuracy: 0.9133, F1 Macro: 0.9126
+Test set evaluation.
+Confusion matrix:
+tensor([[499,   3,  17],
+        [  0, 413,  22],
+        [  1,  84, 461]])
+Report precision, recall, and f1:
+Label 0: 0.961, 0.998, 0.979
+Label 1: 0.949, 0.826, 0.883
+Label 2: 0.844, 0.922, 0.881
+Acc. (Correct/Total): 0.9153 (1373/1500) 
+F1 Macro: 0.9148, F1 Micro: 0.9153, F1 Weighted: 0.9148
+Precision Macro: 0.9184, Recall Macro: 0.9153
