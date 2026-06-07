@@ -9,7 +9,7 @@ import argparse
 from collections import Counter
 from scipy.stats import beta
 
-# ================= ⚡ 中文字体自适应定位器 ⚡ =================
+# =================  中文字体自适应定位  =================
 def configure_chinese_font():
     system_fonts = [f.name for f in fm.fontManager.ttflist 
                     if any(kw in f.name.lower() for kw in ['hei', 'cjk', 'han', 'sim', 'kai', 'yahei', 'wqy'])]
@@ -26,7 +26,7 @@ configure_chinese_font()
 
 def calc_pa_metrics(stabilities, thresholds):
     """
-    根据论文公式计算不同阈值下的样本占比，以及曲线下方的梯形积分面积
+    计算不同阈值下的样本占比，以及曲线下方的梯形积分面积
     """
     stabilities = np.array(stabilities)
     proportions_percentage = []
@@ -38,7 +38,7 @@ def calc_pa_metrics(stabilities, thresholds):
         proportions_percentage.append(prop * 100.0)
         proportions_normalized.append(prop)
         
-    # 严格按照论文 Eq (4) 计算 PA-Area (梯形积分)
+    #  计算 PA-Area (梯形积分)
     pa_area = 0.0
     for i in range(len(thresholds) - 1):
         dx = thresholds[i+1] - thresholds[i]
@@ -72,7 +72,7 @@ def plot_real_pa_curve(thresholds, proportions, pa_area, task_name):
     plt.savefig(output_filename, dpi=300, bbox_inches='tight')
     plt.close()
     
-    print(f"\n[+] 真正的学术级 PA-Curve (严谨复现版) 中文图表已保存为: {output_filename}")
+    print(f"\n[+] PA-Curve (复现版) 中文图表已保存为: {output_filename}")
     print(f"[+] 计算所得 PA-Area (鲁棒性量化核心指标): {pa_area:.4f}")
 
 def main():
@@ -96,7 +96,7 @@ def main():
     N = len(preds) // actual_n
     
     if len(preds) % actual_n != 0:
-        print(f"[!] 严重警告: 预测结果总数 ({len(preds)}) 依然无法被真实样本数 ({actual_n}) 整除！请检查数据完整性。")
+        print(f"[!] 严重警告: 预测结果总数 ({len(preds)}) 无法被真实样本数 ({actual_n}) 整除！请检查数据完整性。")
         return
 
     print(f"[*] 成功识别配置: 真实样本数 n={actual_n}, 蒙特卡洛变异次数 N={N}")
@@ -118,7 +118,7 @@ def main():
         else:
             c_B, n_B = None, 0
             
-        # 论文 Eq(3) 核心约束: 如果最高频预测类别不是真实标签，直接判定为 0 贡献
+        # 论文 Eq(3) 约束: 如果最高频预测类别不是真实标签，直接判定为 0 贡献
         if c_A != true_label:
             delta_p_list.append(-1.0) # 设置为负数，使得在任何 >= x (x \in [0,1]) 的判定中均为 False
             continue
@@ -134,7 +134,6 @@ def main():
         delta_p = p_A_lower - p_B_upper
         delta_p_list.append(delta_p)
 
-    # 论文中曲线的 x 轴是 0 到 1
     thresholds = np.linspace(0.0, 1.0, 101)
     
     # 统计并计算积分

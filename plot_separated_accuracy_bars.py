@@ -9,7 +9,7 @@ import seaborn as sns
 from sklearn.metrics import accuracy_score
 import os
 
-# ================= ⚡ 核心修复：动态中文字体自适应定位器 ⚡ =================
+# ================= 核心修复：动态中文字体自适应定位器 =================
 def configure_chinese_font():
     # 预设常见的 Linux/Mac/Windows 健壮中文字体列表
     font_names = ['Noto Sans CJK SC', 'Source Han Sans CN', 'WenQuanYi Micro Hei', 

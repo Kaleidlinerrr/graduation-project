@@ -11,7 +11,7 @@ import os
 # ================= 全局字体与样式设置 =================
 plt.rcParams['font.sans-serif'] = ['SimHei', 'Arial Unicode MS', 'WenQuanYi Micro Hei', 'sans-serif']
 plt.rcParams['axes.unicode_minus'] = False  
-sns.set_theme(style="whitegrid", font='SimHei') # 使用学术网格背景
+sns.set_theme(style="whitegrid", font='SimHei') # 使用网格背景
 
 # 任务与文件夹映射
 TASKS = [

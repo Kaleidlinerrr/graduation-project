@@ -8,13 +8,12 @@ import seaborn as sns
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 import os
 
-# ================= 全局字体设置 (极其重要，防止中文乱码) =================
-# Windows系统优先使用黑体(SimHei)，Mac系统优先使用Arial Unicode MS，Linux优先使用文泉驿等
+# ================= 全局字体设置 =================
 plt.rcParams['font.sans-serif'] = ['SimHei', 'Arial Unicode MS', 'WenQuanYi Micro Hei', 'sans-serif']
 plt.rcParams['axes.unicode_minus'] = False  # 正常显示负号
 # =====================================================================
 
-# 你的 6 细分类标签
+# 6 细分类标签
 CLASS_NAMES = ['Benign', 'SYN-Flood', 'SlowLoris', 'VPN-App', 'VPN-Service', 'Recon']
 
 def load_data(truth_path, pred_path):
@@ -112,7 +111,6 @@ if __name__ == "__main__":
 
     print("================ 6分类模型 鲁棒性评估报告 ================")
     for name, truth_path, pred_path in experiments:
-        # 修复 Python 3.8 的 f-string 报错: 先把 \n 替换掉存入变量
         clean_name = name.replace('\n', ' ')
         
         if not os.path.exists(truth_path) or not os.path.exists(pred_path):
